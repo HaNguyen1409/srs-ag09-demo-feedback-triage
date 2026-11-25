@@ -1,0 +1,36 @@
+{
+  "$schema_version": 1,
+  "name": "srs-ag09-demo-feedback-triage",
+  "version": "1.0.0",
+  "node_id": "AG-09",
+  "kind": "agent",
+  "summary": "Agent Node AG-09 (Bước 15 SOP viết SRS): tách và phân loại phản hồi buổi demo, gắn SCR/UC/REQ, định tuyến về Bước 9/10/11, baseline hoặc CR, đóng/mở câu hỏi và quyết định trạng thái vòng lặp prototype–demo.",
+  "repository": "https://github.com/HaNguyen1409/srs-ag09-demo-feedback-triage",
+  "license": "MIT",
+  "interface": {
+    "contract": "SKILL.md — đầu vào/đầu ra là tài liệu Markdown/JSON mô tả trong skill; không gọi trực tiếp skill khác",
+    "output_artifact": null,
+    "sop_steps": [
+      {
+        "step": "17",
+        "title": "Phân loại phản hồi & cập nhật baseline",
+        "type": "Agent",
+        "receives_from": "B3 (demo), B16, B6, B8",
+        "sends_to": "B10/B11/B12/B13 (CONTINUE) hoặc B18 (CONVERGED); B5 (REQ mới); PM (CR)"
+      }
+    ]
+  },
+  "upstream": {
+    "srs-ag01-transcript-summary": "^2.0.0",
+    "srs-ag03-gap-analysis": "^2.2.1",
+    "srs-ag05-feature-matrix": "^2.0.0"
+  },
+  "downstream": [
+    "srs-ag10-functional-spec",
+    "srs-ag14-data-design",
+    "srs-ag07-screen-flow-design",
+    "srs-ag08-prototype-builder"
+  ],
+  "orchestrates": {},
+  "runtime": null
+}
